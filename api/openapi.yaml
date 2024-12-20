@@ -1,0 +1,817 @@
+openapi: 3.0.1
+info:
+  description: Prompt Manager REST API Endpoints
+  title: CORE-PromptManager-API
+  version: 0.0.1
+servers:
+- url: "https://goe0ty1i23.execute-api.us-east-1.amazonaws.com/{basePath}"
+  variables:
+    basePath:
+      default: default
+paths:
+  /api/v1/prompts/prompt/{prompt_id}/caller/{caller_id}/likes:
+    get:
+      operationId: GetPromptLikes
+      parameters:
+      - explode: false
+        in: path
+        name: prompt_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-accepts:
+      - application/json
+    post:
+      operationId: LikePrompt
+      parameters:
+      - explode: false
+        in: path
+        name: prompt_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LikeModel'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /api/v1/prompts/prompts/category/{category_id}/caller/{caller_id}:
+    get:
+      operationId: GetPromptsByCategory
+      parameters:
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: category_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-accepts:
+      - application/json
+  /api/v1/prompts/prompt/{prompt_id}/caller/{caller_id}:
+    delete:
+      operationId: DeletePrompt
+      parameters:
+      - explode: false
+        in: path
+        name: prompt_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-accepts:
+      - application/json
+    get:
+      operationId: GetPromptDetails
+      parameters:
+      - explode: false
+        in: path
+        name: prompt_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-accepts:
+      - application/json
+    options:
+      parameters:
+      - explode: false
+        in: path
+        name: prompt_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Access-Control-Allow-Methods:
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Access-Control-Allow-Headers:
+              explode: false
+              schema:
+                type: string
+              style: simple
+      x-accepts:
+      - application/json
+    put:
+      operationId: UpdatePrompt
+      parameters:
+      - explode: false
+        in: path
+        name: prompt_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromptModel'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /api/v1/prompts/category/name/{category_name}/caller/{caller_id}:
+    get:
+      operationId: GetCategoryByName
+      parameters:
+      - explode: false
+        in: path
+        name: category_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-accepts:
+      - application/json
+  /api/v1/prompts/categories/{caller_id}:
+    get:
+      operationId: GetCategories
+      parameters:
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-accepts:
+      - application/json
+    options:
+      parameters:
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Access-Control-Allow-Methods:
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Access-Control-Allow-Headers:
+              explode: false
+              schema:
+                type: string
+              style: simple
+      x-accepts:
+      - application/json
+    post:
+      operationId: CreateCategory
+      parameters:
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryModel'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /api/v1/prompts/prompts/user/{user_id}/caller/{caller_id}:
+    get:
+      operationId: GetPromptsByUser
+      parameters:
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-accepts:
+      - application/json
+  /api/v1/prompts/prompts/{caller_id}:
+    get:
+      operationId: GetPrompts
+      parameters:
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-accepts:
+      - application/json
+    options:
+      parameters:
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Access-Control-Allow-Methods:
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Access-Control-Allow-Headers:
+              explode: false
+              schema:
+                type: string
+              style: simple
+      x-accepts:
+      - application/json
+    post:
+      operationId: CreatePrompt
+      parameters:
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromptModel'
+        required: true
+      responses:
+        "200":
+          content: {}
+          description: 200 response
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /api/v1/prompts/category/{category_id}/caller/{caller_id}:
+    delete:
+      operationId: DeleteCategory
+      parameters:
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: category_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-accepts:
+      - application/json
+    put:
+      operationId: UpdateCategory
+      parameters:
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: category_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryModel'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /api/v1/prompts/prompt/{prompt_id}/caller/{caller_id}/comments:
+    get:
+      operationId: GetPromptComments
+      parameters:
+      - explode: false
+        in: path
+        name: prompt_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-accepts:
+      - application/json
+    post:
+      operationId: PostCommentOnPrompt
+      parameters:
+      - explode: false
+        in: path
+        name: prompt_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentModel'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /api/v1/prompts/user/{user_id}/caller/{caller_id}:
+    delete:
+      operationId: DeleteUser
+      parameters:
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-accepts:
+      - application/json
+    get:
+      operationId: GetUserDetails
+      parameters:
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-accepts:
+      - application/json
+    put:
+      operationId: UpdateUser
+      parameters:
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserModel'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /api/v1/prompts/users/{caller_id}:
+    get:
+      operationId: GetUsers
+      parameters:
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-accepts:
+      - application/json
+    post:
+      operationId: CreateUser
+      parameters:
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserModel'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /api/v1/prompts/prompts/search/{caller_id}:
+    get:
+      operationId: SearchPrompts
+      parameters:
+      - explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: path
+        name: caller_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+          description: 200 response
+      x-accepts:
+      - application/json
+components:
+  schemas:
+    PromptModel:
+      example:
+        template: template
+        description: description
+        language: language
+        title: title
+        userId: 0
+        tags:
+        - tags
+        - tags
+        promptType: promptType
+        tokenSize: 5
+        provider: provider
+        exampleOutput: exampleOutput
+        exampleInput: exampleInput
+        temperature: 1.4658129805029452
+        systemTemplate: systemTemplate
+        model: model
+        category: 6
+      properties:
+        userId:
+          type: integer
+        category:
+          type: integer
+        title:
+          type: string
+        template:
+          type: string
+        systemTemplate:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+        provider:
+          type: string
+        model:
+          type: string
+        temperature:
+          type: number
+        tokenSize:
+          type: integer
+        exampleInput:
+          type: string
+        exampleOutput:
+          type: string
+        description:
+          type: string
+        promptType:
+          type: string
+        language:
+          type: string
+      type: object
+    UserModel:
+      example:
+        password: password
+        email: email
+        username: username
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      type: object
+    Empty:
+      title: Empty Schema
+      type: object
+    LikeModel:
+      example:
+        user_id: 0
+      properties:
+        user_id:
+          type: integer
+      type: object
+    CategoryModel:
+      example:
+        description: description
+        categoryName: categoryName
+        userId: 0
+      properties:
+        categoryName:
+          type: string
+        description:
+          type: string
+        userId:
+          type: integer
+      type: object
+    CommentModel:
+      example:
+        user_id: 0
+        comment: comment
+      properties:
+        user_id:
+          type: integer
+        comment:
+          type: string
+      type: object
+
